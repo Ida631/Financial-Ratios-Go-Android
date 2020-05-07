@@ -13,7 +13,8 @@ import java.util.List;
 public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int HEADER = 0;
-    public static final int STATEMENT = 0;
+    public static final int STATEMENT = 1;
+    public static final int COMPANY= 2;
 
 
     private List<MainItemModel> models;
@@ -39,12 +40,19 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     false);
             MainHeaderRowViewHolder holder = new MainHeaderRowViewHolder(view);
             return holder;
-        } else {
+        } else if(viewType == STATEMENT){
             View view = LayoutInflater.from(parent.getContext()).inflate(
                     R.layout.row_statement_home,
                     parent,
                     false);
             MainFinancialStatementRowViewHolder holder = new MainFinancialStatementRowViewHolder(view);
+            return holder;
+        } else {
+            View view = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.row_company_home,
+                    parent,
+                    false);
+            MainCompanyRowViewHolder holder = new MainCompanyRowViewHolder( view );
             return holder;
         }
     }
@@ -56,11 +64,16 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             String title = model.getmTitle();
             MainHeaderRowViewHolder mainHeaderRowViewHolder = (MainHeaderRowViewHolder) holder;
             mainHeaderRowViewHolder.bind(title);
-        } else {
+        } else if (holder.getItemViewType() == STATEMENT){
             FinancialStatement model = (FinancialStatement)models.get(position);
             String name = model.getmName();
             MainFinancialStatementRowViewHolder mainFinancialStatementRowViewHolder = (MainFinancialStatementRowViewHolder) holder;
             mainFinancialStatementRowViewHolder.bind(name);
+        }else {
+            Company company = (Company)models.get(position);
+            String companyName = company.getmCompany();
+            MainCompanyRowViewHolder mainCompanyRowViewHolder=(MainCompanyRowViewHolder) holder;
+            mainCompanyRowViewHolder.bind( companyName );
         }
     }
 

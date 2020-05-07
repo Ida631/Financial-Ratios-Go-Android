@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         MainAdapter mainAdapter = new MainAdapter(
                 Arrays.asList(
                         new Header("Company and Fiscal Period"),
+                        new Company( "Microsoft" ),
                         new Header("Income Statement"),
                         new FinancialStatement("Revenue"),
                         new FinancialStatement("Operating Income"),
@@ -28,7 +29,22 @@ public class MainActivity extends AppCompatActivity {
                         new FinancialStatement("Interest Expense"),
                         new FinancialStatement("Income Tax Expense"),
                         new FinancialStatement("Net Income"),
-                        new Header("Balance Sheet Statement")));
+                        new Header("Balance Sheet Statement"),
+                        new FinancialStatement( "Cash and Cash Equivalents" ),
+                        new FinancialStatement( "Short-term Investments" ),
+                        new FinancialStatement( "Receivables" ),
+                        new FinancialStatement( "Total Current Assets" ),
+                        new FinancialStatement( "Total Assets" ),
+                        new FinancialStatement( "Short-term Debt" ),
+                        new FinancialStatement( "Long-term Debt" ),
+                        new FinancialStatement( "Total Current Liabilities" ),
+                        new FinancialStatement( "Total Liabilities" ),
+                        new FinancialStatement( "Total Shareholder Equity" ),
+                        new Header( "Cash Flow Statement" ),
+                        new FinancialStatement("Operating Cash Flow" ),
+                        new FinancialStatement( "Dividend Payments" ),
+                        new FinancialStatement( "Free Cash Flow" )));
+
         recyclerView.setAdapter(mainAdapter);
 
     }
